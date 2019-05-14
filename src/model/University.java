@@ -1,5 +1,8 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class University {
 	
 	private String name;
@@ -40,4 +43,36 @@ public class University {
 		}
 	}
 	
+	
+	public List<AcademicUnit> preorder(){
+		if(root==null) {
+			return new ArrayList<AcademicUnit>();
+		}
+		else {
+			return preorder(root, new ArrayList<AcademicUnit>());
+		}
+	}
+	
+	public List<AcademicUnit> preorder(AcademicUnit current, List<AcademicUnit> nodes){
+		
+		if(current.getLeft() == null && current.getRight()==null) {
+			nodes.add(current);
+			return nodes;
+		}else {
+			if(current.getLeft() != null && current.getRight()!=null) {
+				preorder(current.getLeft(), nodes);
+				preorder(current.getRight(), nodes);
+				
+			}else if(current.getLeft() != null) {
+				preorder(current.getLeft(), nodes);
+			}
+			else {
+				preorder(current.getRight(), nodes);
+			
+			}
+			return nodes;
+			
+		}
+		
+	}
 }

@@ -1,6 +1,6 @@
 package model;
 
-public class AcademicUnit {
+public class AcademicUnit implements Comparable<AcademicUnit>{
 	
 	private String name;
 	private int code;
@@ -48,6 +48,11 @@ public class AcademicUnit {
 	 */
 	public void setRight(AcademicUnit right) {
 		this.right = right;
+	}
+
+	@Override
+	public int compareTo(AcademicUnit other) {
+		return this.code - other.code;
 	}
 	
 	
